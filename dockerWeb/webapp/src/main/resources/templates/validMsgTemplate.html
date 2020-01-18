@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+</head>
+<body>
+<style th:fragment="style">
+    .error-border {
+        border: 1px solid red;
+    }
+</style>
+<div th:fragment="errorMsg" class="row" th:if="${result!=null and result.hasErrors()}">
+    <div class="col-md-12">
+        <div class="alert alert-danger alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+                    aria-hidden="true">&times;</span></button>
+            <strong>错误!</strong>&nbsp;
+            <p th:each="err:${result.getAllErrors()}" th:text="${err.defaultMessage}"></p>
+        </div>
+    </div>
+</div>
+
+<div th:fragment="successMsg" class="row" th:if="${success!=null and success}">
+    <div class="col-md-12">
+        <div class="alert alert-success alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+                    aria-hidden="true">&times;</span></button>
+            <strong>温馨提示:</strong>&nbsp;
+            <span>操作成功!</span>
+        </div>
+    </div>
+</div>
+
+<div th:fragment="errorMsgHide" class="row">
+    <div class="col-md-12">
+        <div class="alert alert-danger alert-dismissible" role="alert" style="visibility: hidden;">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+                    aria-hidden="true">&times;</span></button>
+            <strong>错误!</strong>&nbsp;
+
+        </div>
+    </div>
+</div>
+
+<div th:fragment="successMsgHide" class="row">
+    <div class="col-md-12">
+        <div class="alert alert-success alert-dismissible" role="alert" style="visibility: hidden;">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+                    aria-hidden="true">&times;</span></button>
+            <strong>温馨提示:</strong>&nbsp;
+            <span>操作成功!</span>
+        </div>
+    </div>
+</div>
+</body>
+</html>

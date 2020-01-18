@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:substituteby="indextemp::docHead(#{system.name},'首页')">
+</head>
+<body style="overflow-x: hidden">
+<script type="text/javascript" th:substituteby="index.js::js"></script>
+<script type="text/javascript" th:src="@{/js/jquery.websocket.js}"></script>
+<style type="text/css">
+    html {
+        height: 100%
+    }
+
+    body {
+        height: 100%;
+        margin: 0px;
+        padding: 0px
+    }
+</style>
+<div class="container">
+    <div class="row" style="margin-top: .5em;">
+        <div class="col-md-4">
+            <div class="input-group">
+                <span class="input-group-addon" id="basic-addon1">WEB服务IP</span>
+                <input type="text" class="form-control" th:value="${ipaddress}" readonly="true"
+                       aria-describedby="basic-addon1"/>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="input-group">
+                <span class="input-group-addon" id="basic-addon1">当前用户id</span>
+                <input type="text" class="form-control" id="openid" readonly="true"
+                       aria-describedby="basic-addon1"/>
+            </div>
+        </div>
+    </div>
+    <div class="row" style="margin-top: .5em;">
+        <div class="col-md-4">
+            <div class="input-group">
+                <span class="input-group-addon" id="basic-addon1">To:</span>
+                <input type="text" placeholder="接受者id" class="form-control" id="toId"
+                       aria-describedby="basic-addon1"/>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="input-group">
+                <span class="input-group-addon" id="basic-addon1">信息</span>
+                <input type="text" placeholder="要发送的消息" class="form-control" id="msgStr"
+                       aria-describedby="basic-addon1"/>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <button type="button" class="btn btn-info" id="btnSend" onclick="say()">发送</button>
+        </div>
+        <div class="col-md-4">
+            <div class="input-group">
+                <span class="input-group-addon" id="basic-addon1">发送服务器ip</span>
+                <input type="text" placeholder="要发送的消息" class="form-control" id="sendip" readonly="true"
+                       aria-describedby="basic-addon1"/>
+            </div>
+        </div>
+    </div>
+    <div class="row" style="margin-top: .5em;">
+        <div class="col-md-4">
+            <div class="panel panel-default">
+                <div class="panel-body" id="msg">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="panel panel-default">
+                <div class="panel-body" id="msgSay">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="panel panel-default">
+                <div class="panel-body" id="stat">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

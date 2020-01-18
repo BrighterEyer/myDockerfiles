@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:substituteby="template::docHead(#{system.name},'首页')">
+</head>
+<body>
+<script th:src="@{/js/main.js}" type="text/javascript"></script>
+<nav th:replace="template::nav"></nav>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12 col-md-12  main">
+            <ol class="breadcrumb">
+                <li><a href="../main">首页</a></li>
+            </ol>
+            <div class="row">
+                <div class="col-sm-6 col-md-3">
+                    <div class="thumbnail">
+                        <div class="caption">
+                            <h3>来源对比</h3>
+
+                            <p>地图中根据选择的来源，以不同的颜色区分。单星定位的数据以矢量图显示在地图中。</p>
+
+                            <p><a th:href="@{/views/source/query}" class="btn btn-primary"
+                                  role="button">进&nbsp;&nbsp;入</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-3">
+                    <div class="thumbnail">
+                        <div class="caption">
+                            <h3>历史轨迹</h3>
+
+                            <p>输入号段过滤条件，监控一个或多个号码的位置；位置发生变化时，做成百度路书的形式，显示移动轨迹。</p>
+
+                            <p><a th:href="@{/views/realTimeTrace/query}" class="btn btn-primary" role="button">进&nbsp;&nbsp;入</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-3">
+                    <div class="thumbnail">
+                        <div class="caption">
+                            <h3>障碍与报警</h3>
+
+                            <p>设置障碍点与报警距离，实时获取飞机位置。当飞机与障碍点的距离小于报警距离会发出报警。</p>
+
+                            <p><a th:href="@{/views/acars/query}" class="btn btn-primary"
+                                  role="button">进&nbsp;&nbsp;入</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-3">
+                    <div class="thumbnail">
+                        <div class="caption">
+                            <h3>综合查询</h3>
+
+                            <p>
+                                数据来源安全管控GPS。图中可以根据选择“海、陆、空”用途显示坐标点，并且用不同颜色区分。</p>
+
+                            <p><a th:href="@{/views/search/query}" class="btn btn-primary"
+                                  role="button">进&nbsp;&nbsp;入</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

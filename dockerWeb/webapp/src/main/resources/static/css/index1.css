@@ -1,0 +1,122 @@
+.header {
+    height: 55px;
+}
+
+.logn {
+    position: absolute;
+    z-index: 100;
+    top: 100px;
+    left: 70%;
+}
+
+#myCarousel {
+    height: 700px;
+}
+
+#myCarousel .item {
+    height: 700px;
+}
+
+div.login {
+    position: absolute;
+    top: 10em;
+    left: 38%;
+    width: 28em;
+    height: 22em;
+    background: #ffffff;
+    z-index: 101;
+    filter: alpha(opacity=90);
+    -moz-opacity: 0.9;
+    -khtml-opacity: 0.9;
+    opacity: 0.9;
+    -moz-border-radius: 2px; /* Gecko browsers */
+    -webkit-border-radius: 2px; /* Webkit browsers */
+    border-radius: 2px; /* W3C syntax */
+}
+
+div.loginMsg{
+    color: red;
+    margin: 1em auto;
+    width: 10em;
+    line-height: 1em;
+    text-align: center;
+}
+
+.form-signin {
+    max-width: 330px;
+    padding: 15px;
+    margin: 0 auto;
+}
+
+.form-signin .form-signin-heading,
+.form-signin .checkbox {
+    margin-bottom: 10px;
+}
+
+.form-signin .checkbox {
+    font-weight: normal;
+}
+
+.form-signin .form-control {
+    position: relative;
+    height: auto;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 10px;
+    font-size: 16px;
+}
+
+.form-signin .form-control:focus {
+    z-index: 2;
+}
+
+.form-signin input[type="email"] {
+    margin-bottom: -1px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.form-signin input[type="password"] {
+    margin-bottom: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+.logo {
+    float: left;
+    margin: .5em auto .5em 5em;
+    width: 326px;
+    height: 44px;
+}
+
+.logo img {
+    width: 326px;
+    height: 44px;
+}
+
+.title {
+    float: left;
+    width: 326px;
+    height: 44px;
+    padding-top: 1em;
+}
+
+.title span {
+    font-size: 2em;
+    font-weight: bolder;
+}
+
+.footer {
+    background: url(../images/footer.jpg);
+    padding: .8em 0 0 0;
+    margin: 0 auto;
+}
+
+.footer div {
+    margin: 0 auto;
+    width: 25em;
+    height: 4em;
+    line-height: 1.5em;
+    color: #aeae9a;
+}

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+    <Appenders>
+        <Console name="console" target="SYSTEM_OUT" follow="true">
+            <PatternLayout>
+                <pattern>%-d{yyyy-MM-dd HH:mm:ss} [ %c ][ %M ] - [ %p ] %m%n</pattern>
+            </PatternLayout>
+        </Console>
+        <RollingFile name="localhost" fileName="./logs/localhost.log" filePattern="./logs/localhost-%d{yyyy-MM-dd}.log">
+            <PatternLayout>
+                <pattern>%-d{yyyy-MM-dd HH:mm:ss} [ %c ][ %M ] - [ %p ] %m%n</pattern>
+            </PatternLayout>
+            <Policies>
+                <TimeBasedTriggeringPolicy modulate="true" interval="1"/>
+            </Policies>
+        </RollingFile>
+        <RollingFile name="spring" fileName="./logs/spring.log" filePattern="./logs/spring-%d{yyyy-MM-dd}.log">
+            <PatternLayout>
+                <pattern>%-d{yyyy-MM-dd HH:mm:ss} [ %c ][ %M ] - [ %p ] %m%n</pattern>
+            </PatternLayout>
+            <Policies>
+                <TimeBasedTriggeringPolicy modulate="true" interval="1"/>
+            </Policies>
+        </RollingFile>
+        <RollingFile name="thymeleaf" fileName="./logs/thymeleaf.log" filePattern="./logs/thymeleaf-%d{yyyy-MM-dd}.log">
+            <PatternLayout>
+                <pattern>%-d{yyyy-MM-dd HH:mm:ss} [ %c ][ %M ] - [ %p ] %m%n</pattern>
+            </PatternLayout>
+            <Policies>
+                <TimeBasedTriggeringPolicy modulate="true" interval="1"/>
+            </Policies>
+        </RollingFile>
+        <RollingFile name="web" fileName="./logs/web.log" filePattern="./logs/web-%d{yyyy-MM-dd}.log">
+            <PatternLayout>
+                <pattern>%-d{yyyy-MM-dd HH:mm:ss} [ %c ][ %M ] - [ %p ] %m%n</pattern>
+            </PatternLayout>
+            <Policies>
+                <TimeBasedTriggeringPolicy modulate="true" interval="1"/>
+            </Policies>
+        </RollingFile>
+        <RollingFile name="websocket" fileName="./logs/websocket.log"
+                     filePattern="./logs/websocket-%d{yyyy-MM-dd}.log">
+            <PatternLayout>
+                <pattern>%-d{yyyy-MM-dd HH:mm:ss} [ %c ][ %M ] - [ %p ] %m%n</pattern>
+            </PatternLayout>
+            <Policies>
+                <TimeBasedTriggeringPolicy modulate="true" interval="1"/>
+            </Policies>
+        </RollingFile>
+        <RollingFile name="kafka" fileName="./logs/kafka.log"
+                     filePattern="./logs/kafka-%d{yyyy-MM-dd}.log">
+            <PatternLayout>
+                <pattern>%-d{yyyy-MM-dd HH:mm:ss} [ %c ][ %M ] - [ %p ] %m%n</pattern>
+            </PatternLayout>
+            <Policies>
+                <TimeBasedTriggeringPolicy modulate="true" interval="1"/>
+            </Policies>
+        </RollingFile>
+    </Appenders>
+    <Loggers>
+        <Logger name="org.apache.catalina.util.LifecycleBase" level="error">
+            <AppenderRef ref="localhost"/>
+        </Logger>
+        <Logger name="org.apache.coyote.http11.Http11NioProtocol" level="warn">
+            <AppenderRef ref="localhost"/>
+        </Logger>
+        <Logger name="org.apache.tomcat.util.net.NioSelectorPool" level="warn">
+            <AppenderRef ref="localhost"/>
+        </Logger>
+        <Logger name="org.hibernate.validator.internal.util.Version" level="warn">
+            <AppenderRef ref="localhost"/>
+        </Logger>
+        <Logger name="org.springframework" level="info">
+            <AppenderRef ref="spring"/>
+        </Logger>
+        <Logger name="org.thymeleaf" level="warn">
+            <AppenderRef ref="thymeleaf"/>
+        </Logger>
+        <Logger name="com.ultimatech.dockerweb.websocket" level="debug">
+            <AppenderRef ref="websocket"/>
+        </Logger>
+        <Logger name="com.ultimatech.dockerweb.web" level="debug">
+            <AppenderRef ref="web"/>
+        </Logger>
+        <Logger name="org.apache.kafka.clients" level="error">
+            <AppenderRef ref="kafka"/>
+        </Logger>
+        <Root level="debug">
+            <AppenderRef ref="console"/>
+        </Root>
+    </Loggers>
+</Configuration>

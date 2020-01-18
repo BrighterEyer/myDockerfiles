@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:substituteby="template::docHead(#{console.name},'登录')">
+</head>
+
+<body class="bg" style="overflow-y: hidden;overflow-x: hidden">
+<nav th:replace="indextemp::nav(#{console.name})"></nav>
+<div class="container" style="height: 725px;">
+    <div class="row">
+        <div class="col-sm-12 col-md-12">
+            <div class="row">
+                <div class="col-sm-4 col-md-6 col-md-offset-3" style="height: 15em;">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-4 col-md-4 col-md-offset-4 login">
+                    <div class="row">
+                        <div class="col-sm-12 col-md-12">
+                            <form th:action="@{authc/login}" th:method="post" class="form-signin">
+                                <h2 class="form-signin-heading"
+                                    th:text="#{console.name}+(#{system.version}==''?'':('-'+#{system.version}))"></h2>
+                                <label for="username" class="sr-only" th:text="#{label.username}"></label>
+                                <input id="username" th:name="username" th:id="username" th:class="form-control"
+                                       th:placeholder="#{placeholder.username}"
+                                       th:required="true" th:autofocus="true" th:value="${username}"/>
+                                <label for="inputPassword" class="sr-only" th:text="#{label.password}"></label>
+                                <input type="password" id="inputPassword" name="password" class="form-control"
+                                       th:placeholder="#{placeholder.password}"
+                                       required="true"/>
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" id="rememberMe" name="rememberMe" value="true"/> <span
+                                            th:text="#{rememberMe}"></span>
+                                    </label>
+                                </div>
+                                <button class="btn btn-lg btn-primary btn-block" type="submit"
+                                        th:text="#{btn.login}"></button>
+                                <div class="loginMsg"><span th:text="${message}"/></div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

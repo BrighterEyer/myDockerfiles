@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<head th:fragment="docHead(systemName,pageName)">
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title th:text="${systemName}+'——'+${pageName}"></title>
+    <!-- Bootstrap -->
+    <link th:href="@{/bootstrap/3.3.5/css/bootstrap.min.css}" rel="stylesheet" media="screen"/>
+    <link th:href="@{/css/dashboard.css}" rel="stylesheet"/>
+    <link th:href="@{/css/index.css}" rel="stylesheet"/>
+    <script th:src="@{/js/jquery.min.js}"></script>
+    <script th:src="@{/js/util.js}"></script>
+    <script th:src="@{/bootstrap/3.3.5/js/bootstrap.min.js}"></script>
+    <link th:href="@{/bootstrap/3.3.5/css/bootstrap-datetimepicker.css}" rel="stylesheet" media="screen"/>
+    <link th:href="@{/bootstrap/3.3.5/css/bootstrap-datetimepicker.min.css}" rel="stylesheet" media="screen"/>
+    <script th:src="@{/bootstrap/3.3.5/js/bootstrap-datetimepicker.min.js}" type="text/javascript"></script>
+    <script th:src="@{/bootstrap/3.3.5/js/locales/bootstrap-datetimepicker.zh-CN.js}" type="text/javascript"></script>
+    <script th:src="@{/lib/bootstrap-treeview/1.2.0/bootstrap-treeview.min.js}" type="text/javascript"></script>
+</head>
+<body>
+<nav th:fragment="nav(sysName)" class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12 col-md-12">
+                <nav class="navbar navbar-inverse navbar-fixed-top">
+                    <div class="container-fluid">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                                    data-target="#navbar"
+                                    aria-expanded="false" aria-controls="navbar">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <a class="navbar-brand" href="#" th:text="${sysName}"></a>
+                        </div>
+                        <div id="navbar" class="navbar-collapse collapse">
+                            <ul class="nav navbar-nav navbar-right">
+                                <li><a th:href="@{/store/main}" th:text="门店中心首页"></a></li>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                                       aria-haspopup="true"
+                                       aria-expanded="false"><span th:text="会员管理"></span><span class="caret"></span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a th:href="@{/store/member/members}" th:text="会员档案"></a></li>
+                                        <li><a th:href="@{/store/member/refundSelect}" th:text="找回消费记录"></a></li>
+                                        <li><a th:href="@{/store/member/refundHis}" th:text="消费记录找回明细"></a></li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                                       aria-haspopup="true"
+                                       aria-expanded="false"><span th:text="课程管理"></span><span class="caret"></span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a th:href="@{/store/courseManage/toCourseSchedule}" th:text="课程表管理"></a>
+                                        </li>
+                                        <li><a th:href="@{/demo/store/course}" th:text="小班课管理"></a></li>
+                                        <li><a th:href="@{/store/courseManage/appointmentList}" th:text="普通预约"></a></li>
+                                        <li><a th:href="@{/store/courseManage/pappointment}" th:text="私教预约"></a></li>
+                                        <li><a th:href="@{/store/courseManage/trialList}" th:text="体验预约"></a></li>
+                                        <li><a th:href="@{/demo/store/allappointment}" th:text="预约情况"></a></li>
+                                        <li><a th:href="@{/store/courseManage/toManual}" th:text="手动消课"></a></li>
+                                        <li><a th:href="@{/demo/store/complaints}" th:text="建议与投诉"></a></li>
+                                    </ul>
+                                </li>
+                                <li><a th:href="@{/store/classroom}" th:text="教室管理"></a></li>
+                                <li><a th:href="@{/store/coachleave}" th:text="教练请假"></a></li>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                                       aria-haspopup="true"
+                                       aria-expanded="false"><span th:text="经营数据"></span><span class="caret"></span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a th:href="@{/store/business/toCoachAchievement}" th:text="教练业绩报表"></a></li>
+                                        <li><a th:href="@{/demo/store/coachCourse}" th:text="教练课时明细汇总"></a></li>
+                                        <li><a th:href="@{/store/business/consume}" th:text="会员消费明细"></a></li>
+                                        <li><a th:href="@{/store/business/memberCardSearch}" th:text="会员卡查询"></a></li>
+                                    </ul>
+                                </li>
+                                <li><a th:href="@{/authc/store/logout}">安全退出</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+</nav>
+</body>
+</html>

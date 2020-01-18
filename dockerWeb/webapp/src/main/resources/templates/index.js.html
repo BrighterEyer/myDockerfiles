@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <script th:fragment="js" type="text/javascript" th:inline="text">
+        /*<![CDATA[*/
+        function randomString(len) {
+            len = len || 32;
+            var $chars = 'ABCDEFGHJKMNPQRSTWXYZabcdefhijkmnprstwxyz2345678';
+            /****默认去掉了容易混淆的字符oOLl,9gq,Vv,Uu,I1****/
+            var maxPos = $chars.length;
+            var pwd = '';
+            for (i = 0; i < len; i++) {
+                pwd += $chars.charAt(Math.floor(Math.random() * maxPos));
+            }
+            return pwd;
+        }
+        jQuery(function () {
+            var ws = $.websocket("ws://localhost.ultimatech.cn/wss/?openid=" + randomString(10), {
+                open: function () {
+                    console.log("链接打开");
+                },
+                close: function () {
+                    console.log("链接关闭");
+                },
+                events: {
+                    connectioned: function (e) {
+                        $("<p />").text("消息时间:" + e.data.createDate).appendTo("#msg");
+                        $("<p />").text("Socket服务:" + e.data.ip).appendTo("#msg");
+                        $("<p />").text("用户id:" + e.data.toId).appendTo("#msg");
+                        $("#openid").val(e.data.toId);
+                        $("<p />").text("消息内容:" + e.data.content).appendTo("#msg");
+                    },
+                    say: function (e) {
+                        $("<p />").text("消息时间:" + e.data.createDate).appendTo("#msgSay");
+                        $("<p />").text("来自于服务器:" + e.data.ip).appendTo("#msgSay");
+                        $("<p />").text("来自于用户:" + e.data.fromId).appendTo("#msgSay");
+                        $("<p />").text("消息内容:" + e.data.content).appendTo("#msgSay");
+                    },
+                    online: function (e) {
+                        $("<p />").text("消息时间:" + e.data.createDate).appendTo("#stat");
+                        $("<p />").text("来自于服务器:" + e.data.ip).appendTo("#stat");
+                        $("<p />").text("来自于用户:" + e.data.fromId).appendTo("#stat");
+                        $("<p />").text("消息内容:" + e.data.content).appendTo("#stat");
+                    },
+                    offline: function (e) {
+                        $("<p />").text("消息时间:" + e.data.createDate).appendTo("#stat");
+                        $("<p />").text("来自于服务器:" + e.data.ip).appendTo("#stat");
+                        $("<p />").text("来自于用户:" + e.data.fromId).appendTo("#stat");
+                        $("<p />").text("消息内容:" + e.data.content).appendTo("#stat");
+                    }
+                }
+            });
+        });
+        var say = function () {
+            $.ajax({
+                type: "post",
+                url: "[[@{/say}]]",
+                dataType: "json",
+                data: {
+                    toId: $("#toId").val(),
+                    fromId: $("#openid").val(),
+                    content: $("#msgStr").val()
+                },
+                async: true,
+                success: function (data) {
+                    $("#sendip").val(data.ip);
+                }
+            });
+        };
+        /*]]>*/
+    </script>
+</head>
+</html>

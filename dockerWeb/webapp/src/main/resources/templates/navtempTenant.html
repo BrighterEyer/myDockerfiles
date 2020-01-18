@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<head th:fragment="docHead(systemName,pageName)">
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title th:text="${systemName}+'——'+${pageName}"></title>
+    <!-- Bootstrap -->
+    <link th:href="@{/bootstrap/3.3.5/css/bootstrap.min.css}" rel="stylesheet" media="screen"/>
+    <link th:href="@{/css/dashboard.css}" rel="stylesheet"/>
+    <link th:href="@{/css/index.css}" rel="stylesheet"/>
+    <script th:src="@{/js/jquery.min.js}"></script>
+    <script th:src="@{/js/util.js}"></script>
+    <script th:src="@{/bootstrap/3.3.5/js/bootstrap.min.js}"></script>
+    <link th:href="@{/bootstrap/3.3.5/css/bootstrap-datetimepicker.css}" rel="stylesheet" media="screen"/>
+    <link th:href="@{/bootstrap/3.3.5/css/bootstrap-datetimepicker.min.css}" rel="stylesheet" media="screen"/>
+    <script th:src="@{/bootstrap/3.3.5/js/bootstrap-datetimepicker.min.js}" type="text/javascript"></script>
+    <script th:src="@{/bootstrap/3.3.5/js/locales/bootstrap-datetimepicker.zh-CN.js}" type="text/javascript"></script>
+    <script th:src="@{/lib/bootstrap-treeview/1.2.0/bootstrap-treeview.min.js}" type="text/javascript"></script>
+</head>
+<body>
+<nav th:fragment="nav(sysName)" class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12 col-md-12">
+                <nav class="navbar navbar-inverse navbar-fixed-top ">
+                    <div class="container-fluid">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                                    data-target="#navbar"
+                                    aria-expanded="false" aria-controls="navbar">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <a class="navbar-brand" href="#" th:text="${sysName}"></a>
+                        </div>
+                        <div id="navbar" class="navbar-collapse collapse">
+                            <ul class="nav navbar-nav navbar-right">
+                                <li><a th:href="@{/tenant/main}" th:text="商户中心首页"></a></li>
+                                <li><a th:href="@{/tenant/showStores}" th:text="门店管理"></a></li>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                                       aria-haspopup="true"
+                                       aria-expanded="false"><span th:text="教练管理"></span><span class="caret"></span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a th:href="@{/tenant/showCoachlevel}" th:text="教练级别管理"></a></li>
+                                        <li><a th:href="@{/tenant/coaches}" th:text="门店教练管理"></a></li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                                       aria-haspopup="true"
+                                       aria-expanded="false"><span th:text="课程管理"></span><span class="caret"></span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a th:href="@{/tenant/course}" th:text="课程管理"></a></li>
+                                        <li><a th:href="@{/tenant/courseType}" th:text="课程种类管理"></a></li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                                       aria-haspopup="true"
+                                       aria-expanded="false"><span th:text="会员卡管理"></span><span
+                                            class="caret"></span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a th:href="@{/tenant/cards_mem}" th:text="会员卡管理"></a></li>
+                                        <li><a th:href="@{/tenant/showPreferentials}" th:text="优惠活动管理"></a></li>
+                                    </ul>
+                                </li>
+                                <li><a th:href="@{/tenant/equipment}" th:text="教室设备管理"></a></li>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                                       aria-haspopup="true"
+                                       aria-expanded="false"><span th:text="经营数据"></span><span class="caret"></span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a th:href="@{/tenant/operation/toMemConsume}" th:text="会员消费汇总"></a></li>
+                                        <li><a th:href="@{/demo/tenant/members}" th:text="会员汇总"></a></li>
+                                        <li><a th:href="@{/demo/tenant/complain}" th:text="投诉建议"></a></li>
+                                    </ul>
+                                </li>
+                                <li><a th:href="@{/tenant/settings}" th:text="参数设置"></a></li>
+                                <li><a th:href="@{/authc/tenant/logout}">安全退出</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+</nav>
+</body>
+</html>

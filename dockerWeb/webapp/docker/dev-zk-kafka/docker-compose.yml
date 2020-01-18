@@ -1,0 +1,81 @@
+version: '3'
+services:
+  zookeeper-1:
+    image: wurstmeister/zookeeper
+    volumes:
+      - "./zoo1.cfg:/opt/zookeeper-3.4.9/conf/zoo.cfg"
+      - "./myid-1:/opt/zookeeper-3.4.9/data/myid"
+    networks:
+      mynet:
+        ipv4_address: 172.18.0.6
+    ports:
+      - "2181:2181"
+  zookeeper-2:
+    image: wurstmeister/zookeeper
+    volumes:
+      - "./zoo2.cfg:/opt/zookeeper-3.4.9/conf/zoo.cfg"
+      - "./myid-2:/opt/zookeeper-3.4.9/data/myid"
+    networks:
+      mynet:
+        ipv4_address: 172.18.0.7
+    ports:
+      - "2182:2182"
+  zookeeper-3:
+    image: wurstmeister/zookeeper
+    volumes:
+      - "./zoo3.cfg:/opt/zookeeper-3.4.9/conf/zoo.cfg"
+      - "./myid-3:/opt/zookeeper-3.4.9/data/myid"
+    networks:
+      mynet:
+        ipv4_address: 172.18.0.8
+    ports:
+      - "2183:2183"
+
+  kafka-1:
+    image: wurstmeister/kafka
+    volumes:
+      - "./kafka.server.1.properties:/opt/kafka/config/server.properties"
+    networks:
+          mynet:
+            ipv4_address: 172.18.0.9
+    depends_on:
+      - zookeeper-1
+      - zookeeper-2
+      - zookeeper-3
+    ports:
+      - 9092:9092
+  kafka-2:
+      image: wurstmeister/kafka
+      volumes:
+        - "./kafka.server.2.properties:/opt/kafka/config/server.properties"
+      networks:
+            mynet:
+              ipv4_address: 172.18.0.10
+      depends_on:
+            - zookeeper-1
+            - zookeeper-2
+            - zookeeper-3
+      ports:
+            - 9093:9093
+  kafka-3:
+      image: wurstmeister/kafka
+      volumes:
+        - "./kafka.server.3.properties:/opt/kafka/config/server.properties"
+      networks:
+            mynet:
+              ipv4_address: 172.18.0.11
+      depends_on:
+            - zookeeper-1
+            - zookeeper-2
+            - zookeeper-3
+      ports:
+            - 9094:9094
+networks:
+  mynet:
+    driver: bridge
+#    enable_ipv6: false
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.18.0.0/16
+#        - gateway: 172.18.0.1
